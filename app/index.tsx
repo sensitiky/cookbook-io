@@ -1,18 +1,18 @@
-import { Pressable, TextInput, View, StyleSheet } from "react-native";
-import { useAuth } from "@/hooks/useContext";
-import { useState } from "react";
-import { LinearGradient } from "expo-linear-gradient";
+import { Pressable, TextInput, View, StyleSheet } from 'react-native';
+import { useAuth } from '@/hooks/useContext';
+import { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Index() {
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
       await login(email, password);
     } catch (error) {
-      console.error("Login failed", error);
+      console.error('Login failed', error);
     }
   };
 
@@ -20,7 +20,7 @@ export default function Index() {
     <View style={styles.container}>
       <LinearGradient
         style={styles.gradient}
-        colors={["hsla(186, 33%, 94%, 1)", "hsla(216, 41%, 79%, 1)"]}
+        colors={['hsla(186, 33%, 94%, 1)', 'hsla(216, 41%, 79%, 1)']}
       >
         <TextInput
           onChangeText={(text) => setEmail(text)}
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
   },
   gradient: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     borderRadius: 20,
@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
     width: 100,
     margin: 12,
     padding: 10,
-    color: "#fff",
-    backgroundColor: "#000",
+    color: '#fff',
+    backgroundColor: '#000',
   },
   switchToRegister: {
-    color: "#",
-    flexDirection: "column",
-    textAlign: "center",
+    color: '#',
+    flexDirection: 'column',
+    textAlign: 'center',
   },
 });

@@ -1,6 +1,6 @@
-import { Text, View, StyleSheet, Image } from "react-native";
-import { userType, User } from "@/constants/User";
-import { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Image } from 'react-native';
+import { userType, User } from '@/constants/User';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [user, setUser] = useState<userType | null>(null);
@@ -13,7 +13,7 @@ export default function Home() {
       <View style={styles.profileBox}>
         <Image
           style={styles.avatar}
-          source={require("../../assets/images/favicon.png")}
+          source={require('../../assets/images/favicon.png')}
         />
         <Text style={styles.avatarText}>
           User: <br />
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: "#000",
-    justifyContent: "flex-start",
-    flexDirection: "column",
-    alignContent: "center",
+    backgroundColor: '#000',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    alignContent: 'center',
   },
   profileBox: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   avatar: {
     padding: 24,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   avatarText: {
-    color: "#fff",
-    flexDirection: "column",
+    color: '#fff',
+    flexDirection: 'column',
   },
 });

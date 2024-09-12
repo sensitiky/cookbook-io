@@ -1,8 +1,8 @@
 export const User = [
   {
-    User: "Mario",
-    Name: "Correa",
-    Email: "mariomcorrea3@gmail.com",
+    User: 'Mario',
+    Name: 'Correa',
+    Email: 'mariomcorrea3@gmail.com',
     Edad: 24,
   },
 ];
