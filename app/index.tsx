@@ -25,17 +25,24 @@ export default function Index() {
         <TextInput
           onChangeText={(text) => setEmail(text)}
           value={email}
+          placeholder="Email"
           style={styles.input}
           textContentType="emailAddress"
         />
         <TextInput
           onChangeText={(text) => setPassword(text)}
           value={password}
+          placeholder="Password"
           style={styles.input}
           secureTextEntry
         />
-        <Pressable onPress={handleLogin}>Login</Pressable>
-        <Pressable style={styles.switchToRegister}>
+        <Pressable testID="Login" onPress={handleLogin}>
+          Login
+        </Pressable>
+        <Pressable
+          style={styles.switchToRegister}
+          testID="Don't have an account?"
+        >
           Don't have an account? <br />
           Register
         </Pressable>
