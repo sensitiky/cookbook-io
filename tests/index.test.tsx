@@ -10,6 +10,9 @@ jest.mock('@/hooks/useContext', () => ({
 
 describe('Index', () => {
   const mockLogin = jest.fn();
+  const consoleErrorSpy = jest
+    .spyOn(console, 'error')
+    .mockImplementation(() => {});
 
   beforeEach(() => {
     (useAuth as jest.Mock).mockReturnValue({
@@ -42,6 +45,7 @@ describe('Index', () => {
   });
 
   it('calls handleLogin with correct parameters', async () => {
+    mockLogin.mockResolvedValueOnce({ success: true });
     const { getByPlaceholderText, getByTestId } = render(<Index />);
     const emailInput = getByPlaceholderText('Email');
     const passwordInput = getByPlaceholderText('Password');
@@ -69,7 +73,7 @@ describe('Index', () => {
 
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith('test@example.com', 'password123');
-      expect(console.error).toHaveBeenCalledWith(
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
         'Login failed',
         expect.any(Error)
       );
