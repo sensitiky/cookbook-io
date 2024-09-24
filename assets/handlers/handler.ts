@@ -1,5 +1,5 @@
-import { UserType } from '@/constants/interfaces';
-import { useAuth } from '@/hooks/useContext';
+import { UserType } from "@/constants/interfaces";
+import { useAuth } from "@/hooks/useContext";
 
 export const useHandlers = () => {
   const {
@@ -15,7 +15,7 @@ export const useHandlers = () => {
     try {
       await login(email, password);
     } catch (error: any) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
       alert(`Login failed: ${error.message}`);
     }
   };
@@ -24,17 +24,17 @@ export const useHandlers = () => {
     try {
       return await getUser();
     } catch (error: any) {
-      console.error('Error fetching user data');
+      console.error("Error fetching user data");
       alert(`Session failed, ${error.message}`);
       throw error;
     }
   };
 
-  const handleUpdateUser = async (user: UserType) => {
+  const handleUpdateUser = async () => {
     try {
-      return await updateAndFetchUser(user);
+      return await getUser();
     } catch (error: any) {
-      console.error('Error updating user data');
+      console.error("Error updating user data");
       alert(`Update failed, ${error.message}`);
       throw error;
     }
@@ -44,7 +44,7 @@ export const useHandlers = () => {
     try {
       await logout();
     } catch (error: any) {
-      console.error('Logout failed', error);
+      console.error("Logout failed", error);
       alert(`Logout failed: ${error.message}`);
     }
   };
@@ -53,12 +53,12 @@ export const useHandlers = () => {
     name: string,
     lastName: string,
     email: string,
-    password: string
+    password: string,
   ) => {
     try {
       await register(name, lastName, email, password);
     } catch (error: any) {
-      console.error('Registration failed', error);
+      console.error("Registration failed", error);
       alert(`Registration failed: ${error.message}`);
     }
   };
@@ -68,9 +68,9 @@ export const useHandlers = () => {
       const response = await fetch(
         `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=4f2632d6&app_key=3fc27f1a9f42619acb225ed195898e5d&field=image&field=label&field=calories`,
         {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
-        }
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        },
       );
       const data = await response.json();
 
@@ -84,7 +84,7 @@ export const useHandlers = () => {
       }));
       return recipes;
     } catch (error) {
-      console.error('Error fetching recipes:', error);
+      console.error("Error fetching recipes:", error);
       return [];
     }
   };
